@@ -1,0 +1,22 @@
+--add this file in serverscriptservice
+
+game.Players.PlayerAdded:Connect(function(player)
+	-- Create leaderstats
+	local leaderstats = Instance.new("Folder")
+	leaderstats.Name = "leaderstats"
+	leaderstats.Parent = player
+
+	-- Stage value
+	local stage = Instance.new("NumberValue")
+	stage.Name = "Stage"
+	stage.Value = 1
+	stage.Parent = leaderstats
+
+	-- Teleport player on respawn
+	player.CharacterAdded:Connect(function(character)
+		local checkpoint = workspace:FindFirstChild("Checkpoint" .. stage.Value)
+		if checkpoint then
+			character:PivotTo(checkpoint.CFrame + Vector3.new(0, 5, 0))
+		end
+	end)
+end)
