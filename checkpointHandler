@@ -1,0 +1,15 @@
+--place this inside each checkpoint part. each checkpoint MUST be named "CheckpointN" where N is the number of checkpoint that the part is.
+local checkpoint = script.Parent
+local checkpointNumber = tonumber(checkpoint.Name:match("%d+"))
+
+checkpoint.Touched:Connect(function(hit)
+	local player = game.Players:GetPlayerFromCharacter(hit.Parent)
+	if not player then return end
+
+	local stage = player.leaderstats.Stage
+
+	-- Prevent multiple triggers
+	if stage.Value == checkpointNumber then
+		stage.Value += 1
+	end
+end)
