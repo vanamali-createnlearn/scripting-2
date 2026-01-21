@@ -9,7 +9,7 @@ checkpoint.Touched:Connect(function(hit)
 	local stage = player.leaderstats.Stage
 
 	-- Prevent multiple triggers
-	if stage.Value == checkpointNumber then
+	if stage.Value+1 == checkpointNumber then
 		stage.Value += 1
 	end
 end)
