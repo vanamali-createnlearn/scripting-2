@@ -9,7 +9,7 @@ game.Players.PlayerAdded:Connect(function(player)
 	-- Stage value
 	local stage = Instance.new("NumberValue")
 	stage.Name = "Stage"
-	stage.Value = 1
+	stage.Value = 0
 	stage.Parent = leaderstats
 
 	-- Teleport player on respawn
